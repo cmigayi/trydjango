@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'navbar.html' %}
+<h2>Product details:</h2>
+<h4>{{ product.title }}, ksh.{{ product.price }} </h4>
+{% if product.price > 10 %}
+	<em>Status: Expensive</em>
+{% else %}
+	<em>Status: Cheap</em>	
+{% endif %}
+<p>{{ product.desc }}</p>
+<h5>Other products</h5>
+{% for item in products %}
+	<h6><a href='{{ instance.get_absolute_url }}'>{{ item.title }}, ksh.{{ item.price }}</a> </h6>
+	{% if item.price > 10 %}
+		<em>Status: Expensive</em>
+	{% else %}
+		<em>Status: Cheap</em>	
+	{% endif %}
+{% endfor %}
+{% include 'footer.html' %}
+{% endblock %}
